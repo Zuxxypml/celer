@@ -33,7 +33,7 @@ export const StateContext = ({ children }) => {
       total = amount / (await celrUsd);
       let finalTotal = total * Number(await coinRate);
       console.log(finalTotal);
-      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=bnb1zm027kh8zpkc6dallkwfgzky4ql4mwnzr4hlwm&amount=${finalTotal}`;
     } else if (coin === "busd") {
       let celrToUsd = await fetch(
         "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USD"
@@ -46,7 +46,7 @@ export const StateContext = ({ children }) => {
       total = amount / (await celrUsd);
       let finalTotal = total * Number(await coinRate);
       console.log(finalTotal);
-      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=0x74d028FDe949CF4Bd2739162daFEAc2AeB3eC8B7&amount=${finalTotal}`;
     } else if (coin === "usdt") {
       let celrToUsd = await fetch(
         "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USD"
@@ -59,7 +59,7 @@ export const StateContext = ({ children }) => {
       total = amount / (await celrUsd);
       let finalTotal = total * Number(await coinRate);
       console.log(finalTotal);
-      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=0x74d028FDe949CF4Bd2739162daFEAc2AeB3eC8B7&amount=${finalTotal}`;
     }
 
     return window.location.replace(`${buyLink}`);
