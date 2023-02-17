@@ -11,19 +11,19 @@ export const StateContext = ({ children }) => {
     if (coin === "btc") {
       coinRate = 0.00000076;
       total = amount * coinRate;
-      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1qhzynf74nfrc5gh8lqqlrunrnl03sfjsc8vdy27&amount=${total}`;
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${total}`;
     } else if (coin === "bnb") {
       coinRate = 0.00005917;
       total = amount * coinRate;
-      buyLink = `https://link.trustwallet.com/send?coin=714&address=bnb14cug0qxfe86hu7ykuhc0dnpzza9mel8wrte62v&amount=${total}`;
+      buyLink = `https://link.trustwallet.com/send?coin=714&address=bnb1zm027kh8zpkc6dallkwfgzky4ql4mwnzr4hlwm&amount=${total}`;
     } else if (coin === "busd") {
       coinRate = 0.01818112;
-      buyLink = `https://link.trustwallet.com/send?coin=20000714&address=0x9931F46838E022951E04eF1cCe5280D9f5615175&amount=${total}&token_id=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56`;
+      buyLink = `https://link.trustwallet.com/send?coin=20000714&address=0x74d028FDe949CF4Bd2739162daFEAc2AeB3eC8B7&amount=${total}&token_id=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56`;
       total = amount * coinRate;
     } else if (coin === "usdt") {
       coinRate = 0.01817264;
       total = amount * coinRate;
-      buyLink = `https://link.trustwallet.com/send?coin=20000714&address=0x5a799B0537Ca6dd3b3FE92B03D608b6cde71783A&amount=${total}&token_id=0x55d398326f99059fF775485246999027B3197955`;
+      buyLink = `https://link.trustwallet.com/send?coin=20000714&address=0x74d028FDe949CF4Bd2739162daFEAc2AeB3eC8B7&amount=${total}&token_id=0x55d398326f99059fF775485246999027B3197955`;
     }
 
     return window.location.replace(`${buyLink}`);
