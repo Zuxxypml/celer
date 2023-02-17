@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import alameda from "../../Assets/alameda.png";
 import coindesk from "../../Assets/coindesk.png";
 import techinisia from "../../Assets/techinasia.png";
 import yahoo from "../../Assets/yahoo.png";
-import { cardData, coinRateData } from "../../constants/data";
+import { cardData } from "../../constants/data";
 import { Button } from "../Button/Button.styled";
 import Card from "../Card/Card";
 import CoinRateCard from "../CoinRateCard/CoinRateCard";
@@ -23,6 +23,33 @@ import gbv from "../../Assets/gbv.png";
 import kr1 from "../../Assets/kr1.png";
 
 const Section = ({ height, sectionNumber }) => {
+  const [coinsData, setCoinsData] = React.useState([]);
+
+  const coinRateData = [
+    {
+      coin: "CELER/BNB",
+      value: coinsData[0],
+    },
+    { coin: "CELER/BUSD", value: coinsData[2] },
+    { coin: "CELER/BTC", value: `${coinsData && coinsData[3]?.toFixed(8)}` },
+    {
+      coin: "CELER/USDT",
+      value: coinsData[1],
+    },
+  ];
+  useEffect(() => {
+    let fetchCoin = async () => {
+      let celerInCryptos = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USDT,BUSD,BNB,BTC"
+      ).then((data) => data.json());
+      const { BNB, USDT, BUSD, BTC } = celerInCryptos;
+      setCoinsData([BNB, USDT, BUSD, BTC]);
+      console.log(coinsData);
+    };
+    fetchCoin();
+    // eslint-disable-next-line
+  }, []);
+
   if (sectionNumber === "1") {
     return (
       <SectionContainer
@@ -40,6 +67,7 @@ const Section = ({ height, sectionNumber }) => {
           padding="2rem 2.5rem"
           fontSize="1.2rem"
           paddingTop="8rem"
+          onClick={() => window.location.replace(`https://celer.network/`)}
         >
           Explore Solutions
         </Button>
@@ -87,13 +115,16 @@ const Section = ({ height, sectionNumber }) => {
   } else if (sectionNumber === "4") {
     return (
       <SectionContainer
+        id="buytoken"
         height={height}
         backgroundColor="#000"
         color="#fff"
         paddingBottomSmall="5rem"
         paddingTopSmall="2rem"
       >
-        <SectionText color="white">Buy Celer</SectionText>
+        <SectionText id="buytoken" color="white">
+          Buy Celer
+        </SectionText>
         <FlexBetween wrap="wrap" textAlign="center">
           {coinRateData.map((rate) => (
             <CoinRateCard key={rate.coin} coin={rate.coin} value={rate.value} />
@@ -124,7 +155,16 @@ const Section = ({ height, sectionNumber }) => {
             />
           ))}
         </FlexBetween>
-        <Button marginTop="6rem" padding="2rem 2.5rem" fontSize="1.2rem">
+        <Button
+          marginTop="6rem"
+          padding="2rem 2.5rem"
+          fontSize="1.2rem"
+          onClick={() =>
+            window.location.replace(
+              `https://www.binance.com/en-NG/price/celer-network`
+            )
+          }
+        >
           Discover Our Technology
         </Button>
       </SectionContainer>

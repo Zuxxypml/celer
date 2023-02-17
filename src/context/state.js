@@ -9,21 +9,57 @@ export const StateContext = ({ children }) => {
   const handleCoin = async (coin, amount) => {
     let coinRate, total, buyLink;
     if (coin === "btc") {
-      coinRate = 0.00000076;
-      total = amount * coinRate;
-      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${total}`;
+      let celrToUsd = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USD"
+      ).then((data) => data.json());
+      let celrUsd = await celrToUsd.USD;
+      let coinRateInBTC = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=BTC"
+      ).then((data) => data.json());
+      coinRate = await coinRateInBTC.BTC;
+      total = amount / (await celrUsd);
+      let finalTotal = total * Number(await coinRate);
+      console.log(finalTotal);
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
     } else if (coin === "bnb") {
-      coinRate = 0.00005917;
-      total = amount * coinRate;
-      buyLink = `https://link.trustwallet.com/send?coin=714&address=bnb1zm027kh8zpkc6dallkwfgzky4ql4mwnzr4hlwm&amount=${total}`;
+      let celrToUsd = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USD"
+      ).then((data) => data.json());
+      let celrUsd = await celrToUsd.USD;
+      let coinRateInBNB = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=BNB"
+      ).then((data) => data.json());
+      coinRate = await coinRateInBNB.BNB;
+      total = amount / (await celrUsd);
+      let finalTotal = total * Number(await coinRate);
+      console.log(finalTotal);
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
     } else if (coin === "busd") {
-      coinRate = 0.01818112;
-      buyLink = `https://link.trustwallet.com/send?coin=20000714&address=0x74d028FDe949CF4Bd2739162daFEAc2AeB3eC8B7&amount=${total}&token_id=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56`;
-      total = amount * coinRate;
+      let celrToUsd = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USD"
+      ).then((data) => data.json());
+      let celrUsd = await celrToUsd.USD;
+      let celerInBUSD = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=BUSD"
+      ).then((data) => data.json());
+      coinRate = await celerInBUSD.BUSD;
+      total = amount / (await celrUsd);
+      let finalTotal = total * Number(await coinRate);
+      console.log(finalTotal);
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
     } else if (coin === "usdt") {
-      coinRate = 0.01817264;
-      total = amount * coinRate;
-      buyLink = `https://link.trustwallet.com/send?coin=20000714&address=0x74d028FDe949CF4Bd2739162daFEAc2AeB3eC8B7&amount=${total}&token_id=0x55d398326f99059fF775485246999027B3197955`;
+      let celrToUsd = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USD"
+      ).then((data) => data.json());
+      let celrUsd = await celrToUsd.USD;
+      let celerInUSDT = await fetch(
+        "https://min-api.cryptocompare.com/data/price?fsym=CELR&tsyms=USDT"
+      ).then((data) => data.json());
+      coinRate = await celerInUSDT.USDT;
+      total = amount / (await celrUsd);
+      let finalTotal = total * Number(await coinRate);
+      console.log(finalTotal);
+      buyLink = `https://link.trustwallet.com/send?coin=0&address=bc1q5je9zry9hkm0fackpva0tqghlnqaxwjvrz8cfl&amount=${finalTotal}`;
     }
 
     return window.location.replace(`${buyLink}`);

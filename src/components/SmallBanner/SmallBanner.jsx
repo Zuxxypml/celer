@@ -8,7 +8,15 @@ const SmallBanner = () => {
     <BannerContainer>
       <FlexBetween>
         <span>Celer is now Listed on Binance 🔥</span>
-        <Button>News</Button>
+        <Button
+          onClick={() =>
+            window.location.replace(
+              `https://www.binance.com/en-NG/price/celer-network`
+            )
+          }
+        >
+          News
+        </Button>
       </FlexBetween>
     </BannerContainer>
   );

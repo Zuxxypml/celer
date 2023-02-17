@@ -2,13 +2,6 @@ import CheckIcon from "@mui/icons-material/Check";
 import SecurityIcon from "@mui/icons-material/Security";
 import SpeedIcon from "@mui/icons-material/Speed";
 
-export const coinRateData = [
-  { coin: "CELER/BNB", value: "0.00006116" },
-  { coin: "CELER/BUSD", value: "0.01972448" },
-  { coin: "CELER/BTC", value: "0.0000008" },
-  { coin: "CELER/USDT", value: "0.01972448" },
-];
-
 export const cardData = [
   {
     iconElement: <CheckIcon sx={{ mt: "2rem", fontSize: "8rem" }} />,
