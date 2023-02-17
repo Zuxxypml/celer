@@ -19,7 +19,7 @@ export default function InputTextField() {
         label="Amount you want to buy"
         type="number"
         id="fullWidth"
-        helperText={amount < 50 ? "Minimum Amount is $50" : ""}
+        helperText={amount < 1 ? "Minimum Amount is $1" : ""}
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         color="primary"
